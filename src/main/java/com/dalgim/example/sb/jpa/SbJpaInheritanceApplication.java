@@ -8,5 +8,6 @@ public class SbJpaInheritanceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SbJpaInheritanceApplication.class, args);
+		System.out.println();
 	}
 }

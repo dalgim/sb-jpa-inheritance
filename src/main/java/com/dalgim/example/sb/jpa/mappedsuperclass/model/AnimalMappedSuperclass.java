@@ -1,4 +1,4 @@
-package com.dalgim.example.sb.jpa.model;
+package com.dalgim.example.sb.jpa.mappedsuperclass.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +12,7 @@ import javax.persistence.MappedSuperclass;
 @Getter
 @Setter
 @MappedSuperclass
-public abstract class Animal {
+public abstract class AnimalMappedSuperclass {
 
     @Id
     @GeneratedValue
