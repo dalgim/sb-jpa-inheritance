@@ -7,13 +7,18 @@ Inheritance in JPA
   - TABLE_PER_CLASS
   - JOINED
 
-Below I'll demonstrate what are differences between them.
+Below I'll demonstrate what are differences in SQL.
 
-
-TODO
 ##### @MappedSuperclass
 
-Insert
+* Table per concrete class
+* By default all parent attributes are ignored. If we want to use them than we should add @MappedSuperclass in parent class.
+* Polymorphic select queries are difficult because hibernate engine have to create separately query for all concrete class
+* This inheritance type not require contain unique identifier in parent class.
+
+Query Examples:
+
+<b>Insert</b>
 ```sql
  insert 
     into
@@ -23,7 +28,7 @@ Insert
         (null, ?, ?, ?)
 ```
 
-Select
+<b>Select</b>
 ```sql
     select
         mammalmapp0_.id as id1_7_0_,
@@ -37,6 +42,11 @@ Select
 ```
 
 ##### @Inheritance - SINGLE_TABLE
+
+* We can parse all inheritance structure into one table
+* The most efficient way to represent polymorphism but the minus is that columns must accept null values (Because in one table we store a few class representation)
+* Only shared fields can be annotated as NOT NULL
+* We have to annotate concrete class @DiscriminatorValue to mark row type.
 
 Insert
 ```sql
@@ -63,6 +73,11 @@ select
 ```
 ##### @Inheritance - TABLE_PER_CLASS
 
+* Table per concrete class
+* Parent class require contain database identifier
+* Creates additional table when parent class in concrete
+* Polymorphic select queries creates SQL UNION to select entities
+
 Insert
 ```sql
 insert 
@@ -88,6 +103,10 @@ Select
 
 ##### @Inheritance - JOINED
 
+* All class (abstract, interface, concrete class) have has own table
+* All concrete class contain only not inherited fields.
+* All concrete class contain primary key which is parent class foreign key
+* Polymorphic queries creates SQL JOIN to select entities
 Insert
 ```sql
 insert 

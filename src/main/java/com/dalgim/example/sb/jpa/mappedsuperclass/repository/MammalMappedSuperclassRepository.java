@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
  * Created by Mateusz Dalgiewicz on 30.04.2017.
  */
 @Repository
-public interface MammalMappedSuperclassRepository extends CrudRepository<MammalMappedSuperclass, Long> {
+public interface MammalMappedSuperclassRepository extends CrudRepository<MammalMappedSuperclass, String> {
 
 }

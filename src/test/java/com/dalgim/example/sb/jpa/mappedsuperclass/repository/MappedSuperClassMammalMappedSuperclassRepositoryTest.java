@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.assertNotNull;
+
 /**
  * Created by Mateusz Dalgiewicz on 30.04.2017.
  */
@@ -29,7 +31,7 @@ public class MappedSuperClassMammalMappedSuperclassRepositoryTest {
 
     @Test
     public void selectSQL() throws Exception {
-        MammalMappedSuperclass mamal = mappedSuperclassMammalMappedSuperclassRepository.findOne(1L);
+        assertNotNull(mappedSuperclassMammalMappedSuperclassRepository.findOne("1"));
     }
 
 }
